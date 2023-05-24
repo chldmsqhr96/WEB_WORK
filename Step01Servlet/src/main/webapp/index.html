@@ -16,7 +16,52 @@
 		<li><a href="member/list">회원 목록보기</a></li>
 		<li><a href="member/list.jsp">회원 목록보기2</a></li>
 	</ul>
-	<!--<form action="/Step01Servlet/send"></form>-->
+	<!--<form action="send" method="get">-->
+	<!-- 
+		폼을 제출(sumbit)하면 (type="sumbit"인 전송을 누르면)
+		action="요청경로"
+		method="전송방식"
+		
+		서버에 "요청경로"대로 요청이되고, 폼에 입력한 내용은 "전송방식"으로 전송이 된다. (get or post)
+		
+		[form 사용법]
+		1. action 속성의 값은 폼을 제출했을 때 요청되는 경로가 된다.
+		2. method 속성의 값은 전송 방식을 지정한다. 생력하면 default 값은 get이다.
+		3. form의 자손요소중에 type="sumbit" 버튼을 누르면 폼이 제출된다.
+		4. 전송방식은 get과 post가 있는데, get 방식의 전송은 입력한 정보를 주소창에 달고가는 방식이고
+		   post 방식 전송은 요청의 몸통에 달고가는 방식이기에 주소창에 보이지 않는다.
+	
+	 -->
+	<form action="/Step01Servlet/send" method="post"> <!-- post 방식은 한글이 깨짐(utf-8 처리 해줘야함) -->
+		<input type ="text" name="msg" placeholder="서버에 할말 입력...">
+		<button type="sumbit">전송</button>
+	</form>
+	
+	<form action="/Step01Servlet/send2" method="get">
+		<input type ="text" name="msg" placeholder="서버에 할말 입력...2">
+		<button type="sumbit">전송2</button>
+	</form>
+	
+	<form action="/Step01Servlet/send.jsp" method="post">
+		<input type ="text" name="msg" placeholder="서버에 할말 입력...3">
+		<button type="sumbit">전송3</button>
+	</form>
+	
+	<p>링크를 눌러도 get방식 파라미터를 전달할 수 있다.</p>
+	<p>아래의 링크를 눌러보세요</p>
+	
+	<ul>
+		<li><a href="shop/buy.jsp?num=1&amount=2">1번 상품 2개 구입</a></li>
+		<li><a href="shop/buy.jsp?num=5&amount=3">5번 상품 3개 구입</a></li>
+	</ul>
+	
+	<!-- 아래의 코드와 위의 코드는 서버 입장에서 차이가 없다. -->
+	<form action="shop/buy.jsp" method="get">
+		<input type ="text" name="num" placeholder="서버에 할말 입력...4">
+		<input type ="text" name="amount" placeholder="서버에 할말 입력...4">
+		<button type="sumbit">전송4</button>
+	</form>
+	
 	</div>
 </body>
 </html>
