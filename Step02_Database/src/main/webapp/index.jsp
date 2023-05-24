@@ -18,6 +18,7 @@
 		<h1>인덱스 페이지입니다.</h1>
 		<ul>
 			<li><a href="member/list.jsp">회원 목록보기</a></li>
+			<li><a href="guest/list.jsp">게시글 목록 보기</a></li>
 		</ul>
 	</div>
 </body>

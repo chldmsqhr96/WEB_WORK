@@ -45,6 +45,5 @@
 			<button class="btn btn-outline-warning" type="reset">취소</button>
 		</form>
 	</div>
-	
 </body>
 </html>
