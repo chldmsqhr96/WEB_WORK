@@ -9,7 +9,9 @@ import test.guest.dto.GuestDto;
 import test.util.DbcpBean;
 
 public class GuestDao {
+	//외부에서 객체 생성 못하게
 	private static GuestDao dao;
+	//자신의 참조값을 리턴해주는 메소드
 	private GuestDao() {}
 	public static GuestDao getIns() {
 	   if(dao==null) {

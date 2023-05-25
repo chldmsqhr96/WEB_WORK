@@ -32,16 +32,17 @@
 		<%if(isSuc){%>
 			<p class="alert alert-dark">
 				<strong><%=num%></strong>번 게시글 수정 완료
-				<div>
-					<button type="button" class="btn btn-dark" onClick="location.href='list.jsp'">돌아가기</button>
-				</div>
 			</p>
+			<div>
+				<button type="button" class="btn btn-dark" onClick="location.href='list.jsp'">돌아가기</button>
+			</div>
 		<%} else {%>
-			<p class="alert alert-dark"">
+			<p class="alert alert-dark">
 				게시글 수정 실패
-				<div>
-					<button type="button" class="btn btn-dark" onClick="location.href='updateform.jsp?num=<%=num%>'">다시수정</button>
-				</div>
+			</p>
+			<div>
+				<button type="button" class="btn btn-dark" onClick="location.href='updateform.jsp?num=<%=num%>'">다시수정</button>
+			</div>
 			</p>
 		<%} %>
 	</div>
