@@ -27,8 +27,11 @@ GuestDto dto = GuestDao.getIns().getData(num);
 				<label for="pwd" style="display: none">비밀번호</label>
 				<input type="password" id="pwd" name="pwd" class="form-control"/>
 			</div>
-			<button type="sumbit" class="btn btn-dark">삭제</button>
-			<a href="list.jsp">취소</a>
+			<div align="right">
+				<button type="sumbit" class="btn btn-dark">삭제</button>
+				<button type="button" class="btn btn-dark" onClick="location.href='list.jsp'">취소</button>
+			</div>
+
 		</form>
 	</div>
 </body>

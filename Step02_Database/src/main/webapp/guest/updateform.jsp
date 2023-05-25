@@ -36,7 +36,7 @@
 				<input class="form-control" type="password" id="pwd" name="pwd"/>
 			</div>
 			<button class="btn btn-dark" type="sumbit">수정확인</button>
-			<button class="btn btn-dark" type="reset">취소</button>
+			<button type="button" class="btn btn-dark" onClick="location.href='list.jsp'">취소</button>
 		</form>
 	</div>
 </body>

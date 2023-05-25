@@ -30,15 +30,19 @@
 	<div class="container mt-5">
 		<h1>알림</h1>
 		<%if(isSuc){%>
-			<p class="alert alert-primary">
+			<p class="alert alert-dark">
 				<strong><%=writer%></strong>님의 게시글이 작성 되었습니다.
-				<a class="alert-link" href="list.jsp">확인</a>
 			</p>
+			<div>
+				<button type="button" class="btn btn-dark" onClick="location.href='list.jsp'">돌아가기</button>
+			</div>
 		<%}else{%>
-			<p class="alert alert-warning">
+			<p class="alert alert-dark">
 				작성 실패
-				<a class="alert-link" href="insertform.jsp">다시 작성</a>
 			</p>
+			<div>
+				<button type="button" class="btn btn-dark" onClick="location.href='insertform.jsp'">돌아가기</button>
+			</div>
 		<%}%>
 	</div>
 </body>

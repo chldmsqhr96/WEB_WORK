@@ -26,9 +26,7 @@
 				<textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
 			</div>
 			<button type="sumbit" class="btn btn-dark">게시글 추가</button>
-			<a href="list.jsp">
-				돌아가기..
-			</a>
+			<button type="button" class="btn btn-dark" onClick="location.href='list.jsp'">취소</button>
 		</form>
 	</div>
 </body>

@@ -30,14 +30,18 @@
 	<div class="container mt-5">
 		<h1>알림</h1>
 		<%if(isSuc){%>
-			<p class="alert alert-success">
+			<p class="alert alert-dark">
 				<strong><%=num%></strong>번 게시글 수정 완료
-				<a class="alert-link" href="list.jsp">게시판으로 돌아가기</a>
+				<div>
+					<button type="button" class="btn btn-dark" onClick="location.href='list.jsp'">돌아가기</button>
+				</div>
 			</p>
 		<%} else {%>
-			<p class="alert alert-danger">
+			<p class="alert alert-dark"">
 				게시글 수정 실패
-				<a class="alert-link" href="updateform.jsp?num=<%=num%>">다시 수정</a>
+				<div>
+					<button type="button" class="btn btn-dark" onClick="location.href='updateform.jsp?num=<%=num%>'">다시수정</button>
+				</div>
 			</p>
 		<%} %>
 	</div>
