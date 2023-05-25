@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1 class="mb-1">게시글 작성</h1>
+		<h1 class="mb-3">게시글 작성</h1>
 		<form action="insert.jsp" method="post">
 			<div class="mb-2">
 				<label for="writer">작성자</label>

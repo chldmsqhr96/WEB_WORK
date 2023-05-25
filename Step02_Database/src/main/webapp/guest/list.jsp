@@ -15,17 +15,14 @@
 <title>게시판</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<style>
-	h1 {
-		text-decoration: underline;
-		text-decoration-thickness: 3px;
-	}
-</style>
 <body>
+	<jsp:include page="/include/navbar.jsp">
+		<jsp:param value="guest" name="current"/>
+	</jsp:include>
 	<div class="container">
-		<h1 class="mb-4">게시글 목록</h1>
-		<table class="table table-striped border border-2">
+		<table class="table table-striped border border-2 mt-2">
 			<thead>
 				<tr>
 					<th>작성 번호</th>
