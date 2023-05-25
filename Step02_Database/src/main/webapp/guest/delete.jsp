@@ -28,7 +28,7 @@
 			<p class="alert alert-dark">
 				게시글 삭제 실패!
 			</p>
-			<div>
+			<div align="right">
 				<button type="button" class="btn btn-dark" onClick="location.href='deleteform.jsp?num=<%=num%>'">다시 삭제</button>
 				<button type="button" class="btn btn-dark" onClick="location.href='list.jsp'">게시판으로 돌아가기</button>
 			</div>
