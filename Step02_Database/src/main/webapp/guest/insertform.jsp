@@ -10,8 +10,10 @@
  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-	<div class="container">
-		<h1 class="mb-3">게시글 작성</h1>
+	<jsp:include page="/include/navbar.jsp">
+		<jsp:param value="member" name="current"/>
+	</jsp:include>
+	<div class="container mt-4">
 		<form action="insert.jsp" method="post">
 			<div class="mb-2">
 				<label for="writer">작성자</label>

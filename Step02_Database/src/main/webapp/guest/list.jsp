@@ -4,8 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	GuestDao dao = GuestDao.getIns();
-	List<GuestDto> con = dao.getList();
+	List<GuestDto> con = GuestDao.getIns().getList();
 %>
 <!DOCTYPE html>
 <html>

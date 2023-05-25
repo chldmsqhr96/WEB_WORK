@@ -3,8 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-int num = Integer.parseInt(request.getParameter("num"));
-GuestDto dto = GuestDao.getIns().getData(num);
+	int num = Integer.parseInt(request.getParameter("num"));
+	GuestDto dto = GuestDao.getIns().getData(num);
 %>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,10 @@ GuestDto dto = GuestDao.getIns().getData(num);
  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-	<div class="container">
+	<jsp:include page="/include/navbar.jsp">
+		<jsp:param value="member" name="current"/>
+	</jsp:include>
+	<div class="container mt-4">
 		<h1 class="mb-3">비밀번호 입력</h1>
 		<form action="delete.jsp" method="post">
 			<div>

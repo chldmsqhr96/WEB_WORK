@@ -14,8 +14,7 @@
 	dto.setContent(content);
 	dto.setPwd(pwd);
 	
-	GuestDao dao = GuestDao.getIns();
-	boolean isSuc = dao.insert(dto);
+	boolean isSuc = GuestDao.getIns().insert(dto);
 %>
 <!DOCTYPE html>
 <html>
@@ -27,8 +26,10 @@
  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-	<div class="container mt-5">
-		<h1>알림</h1>
+	<jsp:include page="/include/navbar.jsp">
+		<jsp:param value="member" name="current"/>
+	</jsp:include>
+	<div class="container mt-4">
 		<%if(isSuc){%>
 			<p class="alert alert-dark">
 				<strong><%=writer%></strong>님의 게시글이 작성 되었습니다.
