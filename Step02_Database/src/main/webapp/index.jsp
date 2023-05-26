@@ -18,7 +18,7 @@
 	<jsp:include page="/include/navbar.jsp">
 		<jsp:param value="index" name="current"/>
 	</jsp:include>
-	<div class="container-fluid">
+	<div class="container">
 		<h1>인덱스 페이지입니다.</h1>
 		<ul>
 			<li><a href="${pageContext.request.contextPath}/member/list.jsp">회원 목록보기</a></li>

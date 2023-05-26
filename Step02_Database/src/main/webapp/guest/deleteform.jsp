@@ -34,7 +34,6 @@
 				<button type="sumbit" class="btn btn-dark">삭제</button>
 				<button type="button" class="btn btn-dark" onClick="location.href='list.jsp'">취소</button>
 			</div>
-
 		</form>
 	</div>
 </body>
