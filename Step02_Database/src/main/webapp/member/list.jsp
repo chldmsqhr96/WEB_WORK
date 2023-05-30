@@ -21,7 +21,7 @@
 		<jsp:param value="member" name="current"/>
 	</jsp:include>
 	<div class="container">
-		<table class="table table-striped border border-2 mt-2">
+		<table class="table table-striped border border-2 mt-3">
 			<thead>
 				<tr>
 					<th>번호</th>

@@ -20,7 +20,7 @@
 		<jsp:param value="guest" name="current"/>
 	</jsp:include>
 	<div class="container">
-		<table class="table table-striped border border-3 mt-3">
+		<table class="table table-striped border border-2 mt-3">
 			<thead>
 				<tr>
 					<th>작성 번호</th>
