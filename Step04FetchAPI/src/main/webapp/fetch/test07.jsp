@@ -20,7 +20,7 @@
 		<input type="password" name="pwd" placeholder="pwd입력.."/>
 		<button type="submit">로그인</button>
 	</form>
-	<!-- 외부 js 로딩 -->>
+	<!-- 외부 js 로딩 -->
 	<script src="${pageContext.request.contextPath}/js/gura_util.js"></script>
 	<script>
 		document.querySelector("#myForm2").addEventListener("submit", (e)=>{
