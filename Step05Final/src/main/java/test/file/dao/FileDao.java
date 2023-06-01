@@ -64,7 +64,7 @@ public class FileDao {
 		
 		try {
 			conn = new DbcpBean().getConn();
-			String sql = "SELECT num, writer, title, saveFileName, regdate"
+			String sql = "SELECT num, writer, title, orgFileName, saveFileName, fileSize, regdate"
 					   + " FROM board_file"
 					   + " ORDER BY num ASC";
 			
@@ -78,6 +78,8 @@ public class FileDao {
 				dto.setTitle(rs.getString("title"));
 				dto.setSaveFileName(rs.getString("saveFileName"));
 				dto.setRegdate(rs.getString("regdate"));
+				dto.setOrgFileName(rs.getString("orgFileName"));
+				dto.setFileSize(rs.getLong("fileSize"));
 				list.add(dto);
 			}
 		} catch (SQLException se) {
