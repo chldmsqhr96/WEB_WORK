@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="test.users.dao.UsersDao"%>
 <%@page import="test.users.dto.UsersDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,6 +7,8 @@
 	// 읽어오기
 	String id = request.getParameter("id");
 	String pwd = request.getParameter("pwd");
+	String url = request.getParameter("url");
+	String encodedUrl = URLEncoder.encode(url);
 	
 	// UsersDto에 담아서 
 	UsersDto dto = new UsersDto();
@@ -16,7 +19,7 @@
 	boolean isValid = UsersDao.getIns().isValid(dto);
 	/*
 		유효한 정보면 로그인 처리 후 응답한다.
-		유효한 정보가 아니라면 아이디 혹은 비밀번호를 확인하라고 응답한다.
+		유효한 정보가 아니라면 아이디  혹은 비밀번호를 확인하라고 응답한다.
 		
 		로그인 처리는 session scope에 "id"라는 키값으로 로그인된 아이디를 저장한다.
 		여기서 session scope란 HttpSession객체의 setAttribute() 메소드를 이용하면서
@@ -40,12 +43,12 @@
 		<%if(isValid){%>
 		<p class="alert alert-success">
 			<strong><%=dto.getId()%></strong>님 로그인 되었습니다.
-			<a href="${pageContext.request.contextPath}/index.jsp">확인</a>
+			<a href="<%=url%>">확인</a>
 		</p>
 		<%}else{%>
 		<p class="alert alert-danger">
 			아이디 혹은 비밀번호가 다릅니다.
-			<a href="${pageContext.request.contextPath}/users/loginform.jsp">다시 시도</a>
+			<a href="${pageContext.request.contextPath}/users/loginform.jsp?url=<%=encodedUrl%>">다시 시도</a>
 		</p>
 		<%}%>
 	</div>

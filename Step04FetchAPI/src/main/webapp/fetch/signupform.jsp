@@ -101,7 +101,7 @@
                     document.querySelector("button[type=submit]").removeAttribute("disabled");
                 }
                 else {
-                    document.querySelector("button[type=submit]").setAttribute("disabled", "disabled");
+                     document.querySelector("button[type=submit]").setAttribute("disabled", "disabled");
                 }
             }
         })();
