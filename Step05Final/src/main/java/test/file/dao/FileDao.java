@@ -97,4 +97,78 @@ public class FileDao {
 		}
 		return list;
 	}
+	
+	public FileDto getData(int num) {
+		FileDto dto = null; // 참조값을 담을 객체를 미리 생성
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "SELECT writer, title, orgFileName, saveFileName, fileSize, regdate"
+					   + " FROM board_file"
+					   + " WHERE num = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				dto = new FileDto();
+				dto.setNum(num);
+				dto.setWriter(rs.getString("writer"));
+				dto.setTitle(rs.getString("title"));
+				dto.setSaveFileName(rs.getString("saveFileName"));
+				dto.setRegdate(rs.getString("regdate"));
+				dto.setOrgFileName(rs.getString("orgFileName"));
+				dto.setFileSize(rs.getLong("fileSize"));
+			}
+		} catch (SQLException se) {
+			se.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return dto; // FileDto로 생성되었기 때문에 FileDto 타입으로 리턴이 되야만 한다.
+	}
+	
+	public boolean delete(int num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+	    int rowCount = 0;
+		
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "DELETE FROM board_file"
+					   + " WHERE num = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rowCount = pstmt.executeUpdate();
+
+		} catch (SQLException se) {
+			se.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		if (rowCount > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

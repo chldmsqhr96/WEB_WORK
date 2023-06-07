@@ -17,7 +17,7 @@
 		<!--로그인이 되었을 시 if문 활성-->
 		<%if(id!=null){%>
 		<p>
-			<strong><%=id%></strong>님 반갑습니다.
+			<a href="${pageContext.request.contextPath}/users/private/info.jsp"><%=id%></a>님 반갑습니다.
 			<a href="${pageContext.request.contextPath}/users/logout.jsp">로그아웃</a>
 		</p>
 		<%}%>
@@ -27,7 +27,7 @@
 			<li><a href="${pageContext.request.contextPath}/users/loginform.jsp">로그인</a></li>
 			<li><a href="${pageContext.request.contextPath}/private/game.jsp">게임하기(로그인 필요)</a></li>
 			<li><a href="${pageContext.request.contextPath}/private/study.jsp">공부하기(로그인 필요)</a></li>
-			<li><a href="file/list.jsp">자료실</a></li>
+			<li><a href="${pageContext.request.contextPath}/file/list.jsp">자료실</a></li>
 		</ul>
 	</div>
 </body>

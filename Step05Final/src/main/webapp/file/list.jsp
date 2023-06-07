@@ -4,8 +4,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	FileDao dao = FileDao.getIns();
-	List<FileDto> list = dao.getList();
+	List<FileDto> list = FileDao.getIns().getList();
+
+	String id = (String)session.getAttribute("id");
 %>
 <!DOCTYPE html>
 <html>
@@ -19,6 +20,8 @@
 <body>
 	<div class="container">
 		<a href="${pageContext.request.contextPath}/file/private/upload_form.jsp">업로드 하기</a>
+		<br>
+		<a href="${pageContext.request.contextPath}/file/private/upload_form2.jsp">ajax 업로드</a>
 		<h1>자료실 목록입니다.</h1>
 		<table class="table table-striped border border-2 mt-3">
 			<thead>
@@ -28,6 +31,7 @@
 					<th>제목</th>
 					<th>파일명</th>
 					<th>등록일</th>
+					<th>삭제</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,8 +40,15 @@
 					<td><%=tmp.getNum()%></td>
 					<td><%=tmp.getWriter()%></td>
 					<td><%=tmp.getTitle()%></td>
-					<td><%=tmp.getSaveFileName()%></td>
+					<td><a href="download.jsp?num=<%=tmp.getNum()%>"><%=tmp.getOrgFileName()%></a></td>
 					<td><%=tmp.getRegdate()%></td>
+					<td>
+					<!-- 문자열 비교는 반드시 equals를 사용하자, id는 null일
+					 가능성이 있으므로 getWriter에 .을 찍어 equal를 사용하자 -->
+					<%if(tmp.getWriter().equals(id)){%>
+						<a href="delete.jsp?num=<%=tmp.getNum()%>">삭제</a>
+					<%}%>
+					</td>
 				</tr>
 				<%}%>
 			</tbody>
