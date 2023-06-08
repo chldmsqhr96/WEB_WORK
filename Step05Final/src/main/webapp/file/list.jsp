@@ -4,7 +4,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	List<FileDto> list = FileDao.getIns().getList();
+	String pageNum = request.getParameter("pageNum");
+	if(pageNum==null){
+		pageNum="1";
+	}
+	
+	int pNum = Integer.parseInt(pageNum);
+	int amount = pNum * 10;
+
+	List<FileDto> list = FileDao.getIns().getList(pNum, amount);
 
 	String id = (String)session.getAttribute("id");
 %>
@@ -53,6 +61,13 @@
 				<%}%>
 			</tbody>
 		</table>
+		<ul class="pagination">
+			<%for(int i=1; i<=10; i++){%>
+				<li class="page-item">
+					<a class="page-link" href="list.jsp?pageNum=<%=i%>"><%=i%></a>
+				</li>
+			<%}%>
+		</ul>
 	</div>
 </body>
 </html>

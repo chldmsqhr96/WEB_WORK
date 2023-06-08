@@ -196,4 +196,36 @@ public class UsersDao {
 			return false;
 		}
 	}
+	
+	public boolean update(UsersDto dto) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int rowCount = 0;
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "UPDATE users SET email = ?, profile = ? WHERE id = ?";
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, dto.getEmail());
+			pstmt.setString(2, dto.getProfile());
+			pstmt.setString(3, dto.getId());
+
+			rowCount = pstmt.executeUpdate();
+		} catch (SQLException se) {
+			se.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		if (rowCount > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

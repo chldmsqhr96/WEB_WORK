@@ -56,7 +56,7 @@ public class FileDao {
 	         }
 	}
 	
-	public List<FileDto> getList() {
+	public List<FileDto> getList(int pageNum, int amount) {
 		List<FileDto> list = new ArrayList<>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -64,11 +64,16 @@ public class FileDao {
 		
 		try {
 			conn = new DbcpBean().getConn();
-			String sql = "SELECT num, writer, title, orgFileName, saveFileName, fileSize, regdate"
+			String sql = " SELECT * FROM"
+					   + " (SELECT res1.*, rownum as rnum FROM"
+					   + " (SELECT num, writer, title, orgFileName, saveFileName, fileSize, regdate"
 					   + " FROM board_file"
-					   + " ORDER BY num ASC";
+					   + " ORDER BY num ASC) res1)"
+					   + " WHERE rnum BETWEEN ? AND ?";
 			
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, pageNum);
+			pstmt.setInt(2, amount);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {

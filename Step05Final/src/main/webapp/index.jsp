@@ -28,6 +28,7 @@
 			<li><a href="${pageContext.request.contextPath}/private/game.jsp">게임하기(로그인 필요)</a></li>
 			<li><a href="${pageContext.request.contextPath}/private/study.jsp">공부하기(로그인 필요)</a></li>
 			<li><a href="${pageContext.request.contextPath}/file/list.jsp">자료실</a></li>
+			<li><a href="test/signup_form.jsp">form 테스트</a></li>
 		</ul>
 	</div>
 </body>
