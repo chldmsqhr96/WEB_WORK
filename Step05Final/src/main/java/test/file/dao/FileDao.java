@@ -56,7 +56,7 @@ public class FileDao {
 	         }
 	}
 	
-	public List<FileDto> getList(int pageNum, int amount) {
+	public List<FileDto> getListALL() {
 		List<FileDto> list = new ArrayList<>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -64,16 +64,12 @@ public class FileDao {
 		
 		try {
 			conn = new DbcpBean().getConn();
-			String sql = " SELECT * FROM"
-					   + " (SELECT res1.*, rownum as rnum FROM"
-					   + " (SELECT num, writer, title, orgFileName, saveFileName, fileSize, regdate"
+			String sql = " SELECT num, writer, title, orgFileName, saveFileName, fileSize, regdate"
 					   + " FROM board_file"
-					   + " ORDER BY num ASC) res1)"
-					   + " WHERE rnum BETWEEN ? AND ?";
+					   + " ORDER BY num DESC";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, pageNum);
-			pstmt.setInt(2, amount);
+			
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -87,6 +83,84 @@ public class FileDao {
 				dto.setFileSize(rs.getLong("fileSize"));
 				list.add(dto);
 			}
+			
+		} catch (SQLException se) {
+			se.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return list;
+	}
+	
+	public int getCount() {
+		int count=0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "SELECT MAX(ROWNUM) as num FROM board_file";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				count=rs.getInt("num");
+			}
+		} catch (SQLException se) {
+			se.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return count;
+	}
+	
+	public List<FileDto> getList(FileDto dto) {
+		List<FileDto> list = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = " SELECT * FROM"
+	                   + " (SELECT res1.*, rownum as rnum FROM"
+	                   + " (SELECT num, writer, title, orgFileName, saveFileName, fileSize, regdate"
+	                   + " FROM board_file"
+	                   + " ORDER BY num DESC) res1)"
+	                   + " WHERE rnum BETWEEN ? AND ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, dto.getStartRowNum());
+			pstmt.setInt(2, dto.getEndRowNum()); 
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				dto = new FileDto();
+				dto.setNum(rs.getInt("num"));
+				dto.setWriter(rs.getString("writer"));
+				dto.setTitle(rs.getString("title"));
+				dto.setSaveFileName(rs.getString("saveFileName"));
+				dto.setRegdate(rs.getString("regdate"));
+				dto.setOrgFileName(rs.getString("orgFileName"));
+				dto.setFileSize(rs.getLong("fileSize"));
+				list.add(dto);
+			}
+			
 		} catch (SQLException se) {
 			se.printStackTrace();
 		} finally {
@@ -129,6 +203,7 @@ public class FileDao {
 				dto.setOrgFileName(rs.getString("orgFileName"));
 				dto.setFileSize(rs.getLong("fileSize"));
 			}
+			
 		} catch (SQLException se) {
 			se.printStackTrace();
 		} finally {
