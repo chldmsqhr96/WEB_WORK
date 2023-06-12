@@ -10,6 +10,17 @@ import test.util.DbcpBean;
 
 public class CafeDao {
 	private static CafeDao dao;
+	/*
+	static 메소드는 생성자를 호출하지 않고 클래스명으로 바로 호출을 하기 때문에
+	메소드를 호출 전에 무언가 작업 준비를 하고 싶다면 static 블럭 안에서 하면 된다.
+	static 블럭은 해당 클래스를 최초로 사용할 때 한번만 실행하기 때문에
+	초기화 작업을 하기에 적당한 블록이다
+	
+	static{
+		//객체를 생성해서 static필드에 저장해둔다
+		dao = new CafeDao();
+	}
+	*/
 	private CafeDao(){}	
 	public static CafeDao getIns() {	
 		if(dao==null) {
@@ -25,10 +36,11 @@ public class CafeDao {
 		ResultSet rs = null;
 		try {
 			conn = new DbcpBean().getConn();
-			String sql = "SELECT writer, title, regdate, content" + " FROM board_cafe" + " WHERE num = ?";
+			String sql = "SELECT writer, title, TO_CHAR(regdate, 'YYYY.MM.DD HH24:MI') as regdate, content, viewCount"
+					   + " FROM board_cafe" + " WHERE num = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
-
+			
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				dto = new CafeDto();
@@ -37,6 +49,7 @@ public class CafeDao {
 				dto.setContent(rs.getString("content"));
 				dto.setWriter(rs.getString("writer"));
 				dto.setTitle(rs.getString("title"));
+				dto.setViewCount(rs.getInt("viewCount"));
 			}
 			
 		} catch (SQLException se) {
@@ -55,22 +68,30 @@ public class CafeDao {
 		return dto;
 	}
 	
-	boolean addViewCount(int num) {
+	public boolean plusViewCount(int num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		int rowCount = 0;
 
         try {
 			conn = new DbcpBean().getConn();
-	        String sql = "update board_cafe SET viewCount =(viewCount+1) where num = ?";
+	        String sql = "update board_cafe SET viewCount = (viewCount+1) where num = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, num);
-            rs = pstmt.executeQuery();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } if (rowCount > 0) {
+			rowCount = pstmt.executeUpdate();
+			
+		} catch (SQLException se) {
+			se.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		if (rowCount > 0) {
 			return true;
 		} else {
 			return false;
@@ -87,7 +108,7 @@ public class CafeDao {
 			conn = new DbcpBean().getConn();
 			String sql = "SELECT * FROM"
 					   + " (select res1.*, rownum as rnum FROM" 
-					   + " (SELECT num, writer, title, viewCount, regdate"
+					   + " (SELECT num, writer, title, viewCount, TO_CHAR(regdate, 'YYYY.MM.DD HH24:MI') as regdate"
 					   + " FROM board_cafe"
 					   + " ORDER BY num DESC) res1)"
 					   + " WHERE rnum BETWEEN ? AND ?";
@@ -130,7 +151,7 @@ public class CafeDao {
 		
 		try {
 			conn = new DbcpBean().getConn();
-			String sql = "SELECT num, writer, title, viewCount, regdate"
+			String sql = "SELECT num, writer, title, viewCount, TO_CHAR(regdate, 'YYYY.MM.DD HH24:MI') as regdate"
 					   + " FROM board_cafe";
 			pstmt = conn.prepareStatement(sql);
 
@@ -168,8 +189,8 @@ public class CafeDao {
 		try {
 			conn = new DbcpBean().getConn();
 			String sql = "INSERT INTO board_cafe"
-					   + " (num, writer, title, content, regdate)"
-					   + " VALUES(board_cafe_seq.NEXTVAL, ?, ?, ?, sysdate)";
+					   + " (num, writer, title, content, regdate, viewCount)"
+					   + " VALUES(board_cafe_seq.NEXTVAL, ?, ?, ?, sysdate, 1)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getWriter());
 			pstmt.setString(2, dto.getTitle());

@@ -46,7 +46,7 @@
 		<h1>게시글 목록 입니다.</h1>
 		<a href="private/insertform.jsp">게시글 작성</a>
 		<table class="table table-striped-columns">
-			<thead>
+			<thead class="table-dark">
 				<tr>
 					<th>글번호</th>
 					<th>작성자</th>
@@ -67,23 +67,25 @@
 				<%}%>
 			</tbody>
 		</table>
-		<ul class="pagination">
-			<%if(startPageNum != 1){/*startPageNum이 1이 아닌 경우에만*/%>
-			<li class="page-item">
-				<a class="page-link" href="list.jsp?pageNum=<%=startPageNum-1%>">Next</a>
-			</li>
-			<%}%>
-			<%for(int i=startPageNum; i<=endPageNum; i++){%>
-				<li class="page-item <%=i==pageNum ? "active" : ""%>">
-					<a class="page-link" href="list.jsp?pageNum=<%=i%>"><%=i%></a>
+		<nav>
+			<ul class="pagination">
+				<%if(startPageNum != 1){/*startPageNum이 1이 아닌 경우에만*/%>
+				<li class="page-item">
+					<a class="page-link" href="list.jsp?pageNum=<%=startPageNum-1%>">Next</a>
 				</li>
-			<%}%>
-			<%if(endPageNum < totalPageCount){/*endPageNum이 전체 페이지 개수보다 적은 경우에만*/%>
-			<li class="page-item">
-				<a class="page-link" href="list.jsp?pageNum=<%=endPageNum+1%>">Next</a>
-			</li>
-			<%}%>
-		</ul>
+				<%}%>
+				<%for(int i=startPageNum; i<=endPageNum; i++){%>
+					<li class="page-item <%=i==pageNum ? "active" : ""%>">
+						<a class="page-link" href="list.jsp?pageNum=<%=i%>"><%=i%></a>
+					</li>
+				<%}%>
+				<%if(endPageNum < totalPageCount){/*endPageNum이 전체 페이지 개수보다 적은 경우에만*/%>
+				<li class="page-item">
+					<a class="page-link" href="list.jsp?pageNum=<%=endPageNum+1%>">Next</a>
+				</li>
+				<%}%>
+			</ul>
+		</nav>
 	</div>
 </body>
 </html>
