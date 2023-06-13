@@ -20,20 +20,26 @@
 	
 	<h2>비교 연산</h2>
 	<p>10 &gt; 2 ${10 > 2 }</p>
+	<!-- gt = greater -->
 	<p>10 &gt; 2 ${10 gt 2 }</p>
 	<p>10 &gt; 2 ${10 >= 2 }</p>
+	<!-- ge = Greater or Equal -->
 	<p>10 &gt; 2 ${10 ge 2 }</p>
 	
     <p>10 &lt; 2 : ${10 < 2 }</p>
+    <!-- lt = little -->
     <p>10 &lt; 2 : ${10 lt 2 }</p>
     <p>10 &le; 2 : ${10 <= 2 }</p>
+    <!-- le = Little or Equal -->
     <p>10 &le; 2 : ${10 le 2 }</p>
-   
+    
     <p>10 == 10 : ${10 == 10 }</p>
+    <!-- eq = Equal -->
     <p>10 == 10 : ${10 eq 10 }</p>
     <p>10 != 10 : ${10 != 10 }</p>
+    <!-- ne = Not Equal -->
     <p>10 != 10 : ${10 ne 10 }</p>
-   
+    
     <h2>논리연산</h2>
     <p> true || false : ${true || false }</p>
     <p> true or false : ${true or false }</p>
@@ -41,14 +47,14 @@
     <p> true and false : ${true and false }</p>
     <p> !true : ${!true }</p>
     <p> not true: ${not true }</p>
-   
+    
     <h2>empty 연산자 (비어 있는지 여부)</h2>
     <p> null 혹은 빈 문자열("") 는  true 로 판정된다.</p>
     <p> empty null : ${empty null }</p>
     <p> empty "" : ${empty "" }</p>
     <p> not empty null : ${ not empty null }</p>
     <p> not empty "" : ${ not empty "" }</p>
-   
+    
     <h3>3 항 연산</h3>
     <p> ${ true ? 'coffee' : 'water' }</p>
     <p> ${ false ? 'coffee' : 'water' }</p>

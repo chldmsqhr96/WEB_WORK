@@ -136,7 +136,7 @@ public class CafeDao {
 				if (pstmt != null)
 					pstmt.close();
 				if (conn != null)
-					conn.close(); //Connection 이 Connection Pool 에 반납된다.
+					conn.close();
 			} catch (Exception e) {
 			}
 		}
@@ -175,7 +175,7 @@ public class CafeDao {
 				if (pstmt != null)
 					pstmt.close();
 				if (conn != null)
-					conn.close(); //Connection 이 Connection Pool 에 반납된다.
+					conn.close();
 			} catch (Exception e) {
 			}
 		}
