@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	String id = (String)session.getAttribute("id");
-%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,14 +12,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+	<jsp:include page="/include/navbar.jsp">
+		<jsp:param value="index" name="current"/>
+	</jsp:include>
 	<div class="container">
-		<!--로그인이 되었을 시 if문 활성-->
-		<%if(id!=null){%>
-		<p>
-			<a href="${pageContext.request.contextPath}/users/private/info.jsp"><%=id%></a>님 반갑습니다.
-			<a href="${pageContext.request.contextPath}/users/logout.jsp">로그아웃</a>
-		</p>
-		<%}%>
 		<h1>인덱스 페이지 입니다.</h1>
 		<ul>
 			<li><a href="${pageContext.request.contextPath}/users/signup_form.jsp">회원가입</a></li>

@@ -10,7 +10,6 @@
 	//Response 객체에 addCookie()메소드를 호출하면서, Cookie 객체를 전달하면
 	//클라이언트에게 응답할 때 자동으로 쿠키도 응답된다.
 	response.addCookie(cook);
-
 %>
 <!DOCTYPE html>
 <html>

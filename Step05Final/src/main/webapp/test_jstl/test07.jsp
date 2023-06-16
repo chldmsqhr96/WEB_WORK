@@ -24,7 +24,7 @@
 	</c:if>
 	<p>${str }</p>
 	<p>${fn:escapeXml(str) } \${fn:escapeXml(	)}은 마크업 형태의 언어로 해석하지 않겠다는 의미</p>
-	<p>${content }</p>
+	<p>${content}</p>
 	<p>${fn:replace(content, newLine, '<br>') }</p>
 </body>
 </html>

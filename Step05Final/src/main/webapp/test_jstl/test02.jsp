@@ -29,6 +29,7 @@
 	</ul>
 	<h1>인덱스 표시</h1>
 	<ul>
+	<!-- varStatus가 없으면 인덱스, 카운트 등의 조건이 출력되지 않는다. -->
 	<c:forEach var="tmp" items="${list }" varStatus="s">
 		<li>${tmp } <strong>${s.index }</strong></li>
 	</c:forEach>

@@ -19,7 +19,6 @@
 			if(key.equals("savedPwd")){
 				savedPwd=tmp.getValue();
 			}
-			
 		}
 	}
 %>

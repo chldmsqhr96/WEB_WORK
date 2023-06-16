@@ -13,6 +13,7 @@
 <title>test06</title>
 </head>
 <body>
+	<!-- forTokens은 구분자를 기준으로 내용을 하나 씩 출력한다. -->
 	<h1>forTokens 활용</h1>
 	<h2>취미 목록</h2>
 	<ul>

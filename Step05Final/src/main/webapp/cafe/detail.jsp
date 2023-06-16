@@ -20,6 +20,13 @@
 </head>
 <body>
 	<div class="container">
+	<nav aria-label="breadcrumb">
+  		<ol class="breadcrumb">
+    		<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+    		<li class="breadcrumb-item"><a href="list.jsp">Cafe</a></li>
+    		<li class="breadcrumb-item active">Detail</li>
+  		</ol>
+	</nav>
 		<h3>페이지 상세 보기</h3>
 		<table class="table table-bordered">
 			<tr>

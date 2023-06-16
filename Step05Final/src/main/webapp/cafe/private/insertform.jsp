@@ -10,6 +10,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+	<nav aria-label="breadcrumb">
+  		<ol class="breadcrumb">
+    		<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+    		<li class="breadcrumb-item"><a href="list.jsp">Cafe</a></li>
+    		<li class="breadcrumb-item active">Insert</li>
+  		</ol>
+	</nav>
 	<div class="container">
 		<h1>게시글 작성 양식</h1>
 		<form action="insert.jsp" method="post">

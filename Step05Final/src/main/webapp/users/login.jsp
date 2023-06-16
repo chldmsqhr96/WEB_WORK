@@ -10,7 +10,7 @@
 	String url = request.getParameter("url");
 	String encodedUrl = URLEncoder.encode(url);
 	
-	// UsersDto에 담아서 
+	// UsersDto에 담아서
 	UsersDto dto = new UsersDto();
 	dto.setId(id);
 	dto.setPwd(pwd);

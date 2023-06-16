@@ -23,7 +23,7 @@
 		response.addCookie(cook1);
 		response.addCookie(cook2);
 	}
-%>    
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,11 +35,3 @@
 	<a href="cookie_form3.jsp">다시 테스트</a>
 </body>
 </html>
-
-
-
-
-
-
-
-

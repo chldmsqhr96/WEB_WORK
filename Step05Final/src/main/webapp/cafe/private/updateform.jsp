@@ -17,6 +17,14 @@
 </head>
 <body>
 	<div class="container">
+		<nav aria-label="breadcrumb">
+  		<ol class="breadcrumb">
+    		<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+    		<li class="breadcrumb-item"><a href="list.jsp">Cafe</a></li>
+    		<li class="breadcrumb-item"><a href="../detail.jsp?num=<%=dto.getNum()%>">Detail</a></li>
+    		<li class="breadcrumb-item active">Update</li>
+  		</ol>
+		</nav>
 		<h1>게시글 수정</h1>
 		<form action="update.jsp?num=<%=num%>" method="post">
 			<div class="mb-2">

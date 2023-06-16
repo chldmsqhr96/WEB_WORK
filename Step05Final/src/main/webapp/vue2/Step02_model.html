@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step02_model.html</title>
+</head>
+<body>
+    <h1>v-model 사용하기</h1>
+    <div id="app">
+        <!-- input 요소의 value 를 msg 라는 모델명으로 사용하겠다 -->
+        <input type="text" v-model="msg" > 
+        <p>{{msg}}</p>
+        
+        <input type="text" @input="onInput"/>
+        <p>{{msg2}}</p>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        let app=new Vue({
+            el:"#app", //vue js가 관여할 부분을 선언한다.
+            data:{//data는 vue js에서 변수 선언문과 같은 느낌이다.
+              msg:"",
+              msg2:""
+            },
+            methods:{//methods는 vue js에서 함수 선언 부분과 같은 느낌이다.
+                 onInput(e){
+                	 this.msg2=e.target.value;
+                 }
+            }
+        });
+    </script>    
+</body>
+</html>

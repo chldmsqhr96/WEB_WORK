@@ -48,18 +48,22 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+	<jsp:include page="/include/navbar.jsp">
+		<jsp:param value="file" name="current"/>
+	</jsp:include>
 	<div class="container">
 		<a href="${pageContext.request.contextPath}/file/private/upload_form.jsp">업로드 하기</a>
 		<br>
 		<a href="${pageContext.request.contextPath}/file/private/upload_form2.jsp">ajax 업로드</a>
 		<h1>자료실 목록입니다.</h1>
 		<table class="table table-striped border border-2 mt-3">
-			<thead>
+			<thead class="table-dark">
 				<tr>
 					<th>번호</th>
 					<th>작성자</th>
 					<th>제목</th>
 					<th>파일명</th>
+					<th>파일 사이즈</th>
 					<th>등록일</th>
 					<th>삭제</th>
 				</tr>
@@ -71,6 +75,7 @@
 					<td><%=tmp.getWriter()%></td>
 					<td><%=tmp.getTitle()%></td>
 					<td><a href="download.jsp?num=<%=tmp.getNum()%>"><%=tmp.getOrgFileName()%></a></td>
+					<td><%=tmp.getFileSize()%>byte</td>
 					<td><%=tmp.getRegdate()%></td>
 					<td>
 					<!-- 문자열 비교는 반드시 equals를 사용하자, id는 null일
