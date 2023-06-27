@@ -24,7 +24,7 @@
                         <button v-on:click="updateItem(index)">수정</button>
                         <button v-on:click="deleteItem(index)">삭제</button>
                     </li>
-                </ul>    
+                </ul>
             `,
             props:["list"],
             methods:{
@@ -48,15 +48,24 @@
             methods:{
                 deleteMember(index){
                     this.members.splice(index, 1);
+                    
+                    /*this.members = this.members.filter((e, i)=>index != i);*/
                 },
                 updateMember(data){
                     //아래처럼 배열을 변경하면 변경이 감지가 안되기 때문에 화면 업데이트가 안된다.
                     //this.members[data.i] = data.newName;
-
                     //아래의 2가지 방법중 하나로 배열을 변경해야 한다. 
                     //Vue.set(this.members, data.i, data.newName);
                     // $set(수정할배열의참조값, 수정할 인덱스, 수정할 값)
-                    this.$set(this.members, data.i, data.newName);
+                    //this.$set(this.members, data.i, data.newName);
+                    
+                    this.members = members.map((e, i)=>{
+                    	if(i == data.i){
+                    		return data.newName;
+                    	} else {
+                    		return item;
+                    	}
+                    });
                 }
             }
         });

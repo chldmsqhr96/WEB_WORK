@@ -7,7 +7,7 @@
 <body>
     <h1>이벤트 테스트4</h1>
     <div id="app">
-        <div class="box" v-on:click="divClicked">div1</div>
+        <div class="box" @click="divClicked">div1</div>
         <div class="box" v-on:click="divClicked">div2</div>
         <div class="box" v-on:click="divClicked">div3</div>
         <div class="box" v-on:click="divClicked">div4</div>
@@ -21,7 +21,7 @@
               
             },
             methods:{
-                divClicked:function(e){
+                divClicked(e){
                     //클릭한 바로 그 div 의 innerText 를 "clicked!" 로 바꾸고 싶다면? 
                     console.log(e);
                     // e.target 은 이벤트가 발생한 문서객체의 참조값이다.

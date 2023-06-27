@@ -74,7 +74,7 @@
 			<ul class="pagination">
 				<%if(startPageNum != 1){/*startPageNum이 1이 아닌 경우에만*/%>
 				<li class="page-item">
-					<a class="page-link" href="list.jsp?pageNum=<%=startPageNum-1%>">Next</a>
+					<a class="page-link" href="list.jsp?pageNum=<%=startPageNum-1%>">Preview</a>
 				</li>
 				<%}%>
 				<%for(int i=startPageNum; i<=endPageNum; i++){%>

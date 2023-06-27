@@ -10,7 +10,7 @@
 	<div id="app">
 		<p>오늘의 운세 : <strong>{{ fortune }}</strong></p>
 		<p>내 이름은 : <strong>{{ myName }}</strong></p>
-		<button v-on:click="clicked">눌러보셈</button>
+		<button @click="clicked">눌러보셈</button>
 		<button v-on:click="clicked2">눌러보셈2</button>
 		<br />
 		<input type="text" v-model="msg"/>
@@ -18,7 +18,7 @@
 		<br />
 		<h3>숫자 목록입니다.</h3>
 		<ul>
-			<li v-for="item in nums">{{item}}</li>
+			<li v-for="tmp in nums">{{tmp}}</li>
 		</ul>
 	</div>
 	<script>
@@ -38,7 +38,7 @@
 					this.fortune="남쪽으로 가도 귀인을 만나요";
 				},
 				clicked2:function(){
-				this.myName="김구라";
+					this.myName="김구라";
 				}
 			}
 		});

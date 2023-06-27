@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8">       
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>test06</title>
 </head>
@@ -25,6 +25,11 @@
 		<c:forTokens var="tmp" items="${friends }" delims=",">
 			<li>${tmp }</li>
 		</c:forTokens>
+	</ul>
+	<ul>
+		<c:forEach var="tmp" items="${friends }">
+			<li>${tmp }</li>
+		</c:forEach>	
 	</ul>
 </body>
 </html>
