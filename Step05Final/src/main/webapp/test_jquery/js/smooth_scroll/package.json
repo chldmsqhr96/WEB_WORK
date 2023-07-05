@@ -1,0 +1,46 @@
+{
+  "name": "jquery-smooth-scroll",
+  "title": "jQuery Smooth Scroll",
+  "version": "2.2.0",
+  "scripts": {},
+  "main": "jquery.smooth-scroll.js",
+  "author": {
+    "name": "Karl Swedberg",
+    "email": "kswedberg@gmail.com",
+    "url": "https://karlswedberg.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kswedberg/jquery-smooth-scroll"
+  },
+  "homepage": "https://github.com/kswedberg/jquery-smooth-scroll",
+  "docs": "https://github.com/kswedberg/jquery-smooth-scroll",
+  "bugs": "https://github.com/kswedberg/jquery-smooth-scroll/issues",
+  "demo": "http://plugins.learningjquery.com/smooth-scroll/demo/",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": ">=1.7.0"
+  },
+  "devDependencies": {
+    "eslint-config-kswedberg": "^5.1.1",
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^2.1.0",
+    "grunt-contrib-jshint": "^3.2.0",
+    "grunt-contrib-uglify": "^5.2.2",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-eslint": "^24.0.0",
+    "grunt-shell": "^4.0.0",
+    "grunt-version": "^3.0.0",
+    "lodash": "^4.17.4",
+    "marked": "^4.0.19",
+    "node-syntaxhighlighter": "^0.8.1",
+    "qunit": "^2.19.1"
+  },
+  "keywords": [
+    "jQuery",
+    "jquery-plugin",
+    "scroll",
+    "animation"
+  ],
+  "readmeFilename": "readme.md"
+}
